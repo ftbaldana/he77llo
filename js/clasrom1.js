@@ -1,18 +1,34 @@
-// Ads completely disabled - safe stub version
-// Keeps all functions but prevents errors and keeps game flow working
+// Ads completely disabled - safe stub version (FIXED FLOW)
 
 // Dummy adsbygoogle
 window.adsbygoogle = window.adsbygoogle || [];
 
-// Dummy adBreak / adConfig
+var rewardReadyShowAds = null;
+
+// Dummy adBreak / adConfig (ASYNC FLOW FIXED)
 const adBreak = adConfig = function (o) {
-    // Immediately simulate successful flow without ads
-    if (o && typeof o === "object") {
-        // Simulate callbacks safely
-        if (o.beforeAd) o.beforeAd();
-        if (o.beforeReward) o.beforeReward(() => {});
+    if (!o || typeof o !== "object") return;
+
+    // BEFORE AD (pause vs)
+    if (o.beforeAd) o.beforeAd();
+
+    // Reward flow gerekiyorsa sakla
+    if (o.beforeReward) {
+        o.beforeReward(function () {
+            console.log("showAdFn called (fake)");
+        });
+    }
+
+    // Async simülasyon (EN KRİTİK KISIM)
+    setTimeout(() => {
+
+        // Reward verilecekse
         if (o.adViewed) o.adViewed();
+
+        // After ad
         if (o.afterAd) o.afterAd();
+
+        // Finish callback
         if (o.adBreakDone) {
             o.adBreakDone({
                 breakType: o.type || "none",
@@ -21,12 +37,12 @@ const adBreak = adConfig = function (o) {
                 breakStatus: "completed"
             });
         }
-    }
+
+    }, 400);
 };
 
-var rewardReadyShowAds = null;
 
-// Init (instant success)
+// Init
 function InitSDKJs() {
     console.log("SDK Init (Ads Disabled)");
 
@@ -36,30 +52,52 @@ function InitSDKJs() {
     }, 100);
 }
 
-// Interstitial (skip but keep flow)
+
+// Interstitial (DOĞRU AKIŞ)
 function CallInterstitialAdsJs() {
     console.log("Interstitial skipped");
+
     pauseGameBeforeAds();
-    resumeGameAfterAds();
+
+    setTimeout(() => {
+        resumeGameAfterAds();
+    }, 300);
 }
 
-// Rewarded load (always available)
+
+// Rewarded preload
 function LoadRewardedAdsJs() {
     console.log("Rewarded Ads Fake Loaded");
-    RewardedAdsLoaded();
+
+    setTimeout(() => {
+        RewardedAdsLoaded();
+    }, 100);
 }
 
-// Rewarded show (instant success)
+
+// Rewarded show (UNITY SAFE)
 function CallRewardedAdsJs() {
     console.log("Rewarded Ads Simulated");
 
     pauseGameBeforeAds();
 
     setTimeout(() => {
+
+        // bazı oyunlar bunu bekler
+        if (typeof rewardReadyShowAds === "function") {
+            rewardReadyShowAds();
+        }
+
         RewardSuccessful();
+
+        // bazı sistemler dismiss bekler
+        RewardedAdsDismissed();
+
         resumeGameAfterAds();
-    }, 300);
+
+    }, 500);
 }
+
 
 // States
 function RewardedAdsLoaded() {
@@ -81,6 +119,7 @@ function RewardSuccessful() {
     console.log("Reward Granted");
     myGameInstance.SendMessage('RHMAdsManager', 'RewardedAdsSuccessfull');
 }
+
 
 // Game control
 function pauseGameBeforeAds() {

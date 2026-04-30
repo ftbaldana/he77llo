@@ -10,7 +10,7 @@
         
         html,
         body {
-            background-image: url("Build/Build.jpg");
+            background-image: url("https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/Build.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -229,16 +229,16 @@
 
 <body>
     <div id="orientation-warning">
-        <img id="orientation-image" src="TemplateData/Orientation/orientation.png" alt="Orientation">
+        <img id="orientation-image" src="https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/TemplateData/Orientation/orientation.png" alt="Orientation">
         <div class="orientation-text">Please rotate your device to the correct mode.</div>
     </div>
     <div id="gameContainer">
-        <img src="TemplateData/logo.png" class="centered">
+        <img src="https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/TemplateData/logo.png" class="centered">
         <div class="loadingOut">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
         <canvas id="unity-canvas" data-pixel-art=""></canvas>
-        <script src="Build/SixSevenClicker_V2.loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.loader.js"></script>
         <script>
             // Multi-language support for orientation messages
             var orientationMessages = {
@@ -311,13 +311,13 @@
             var loadingHidden = false;
             var loadingStartTime = Date.now();
             var config = {
-                dataUrl: "Build/SixSevenClicker_V2.data.unityweb",
-                frameworkUrl: "Build/SixSevenClicker_V2.framework.js.unityweb",
-                codeUrl: "Build/SixSevenClicker_V2.wasm.unityweb",
+                dataUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.data.unityweb",
+                frameworkUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.framework.js.unityweb",
+                codeUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.wasm.unityweb",
                 streamingAssetsUrl: "StreamingAssets",
-                companyName: "gameVgames",
-                productName: "67 Clicker Tap Tap",
-                productVersion: "1.0.3",
+                companyName: "name",
+                productName: "name",
+                productVersion: "1.0.2",
             };
             var scaleToFit;
             try {
@@ -472,7 +472,7 @@
 
             function loadTemplateConfig() {
                 var request = new XMLHttpRequest();
-                request.open('GET', 'TemplateData/Orientation/template.json', true);
+                request.open('GET', 'https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/TemplateData/Orientation/template.json', true);
                 request.onreadystatechange = function() {
                     if (request.readyState === 4) {
                         if (request.status === 200) {
@@ -528,9 +528,7 @@
 
             loadTemplateConfig();
         </script>
-
-        <!--RHM API-->
-		<script type="text/javascript" src="js/clasrom.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/js/clasrom.js"></script>
     </div>
 </body>
 
