@@ -317,9 +317,9 @@
             var loadingHidden = false;
             var loadingStartTime = Date.now();
             var config = {
-                dataUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.data.unityweb",
-                frameworkUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.framework.js.unityweb",
-                codeUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@main/Build/SixSevenClicker_V2.wasm.unityweb",
+                dataUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@38ad36e/Build/SixSevenClicker_V2.data.unityweb",
+                frameworkUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@38ad36e/Build/SixSevenClicker_V2.framework.js.unityweb",
+                codeUrl: "https://cdn.jsdelivr.net/gh/ftbaldana/he77llo@38ad36e/Build/SixSevenClicker_V2.wasm.unityweb",
                 streamingAssetsUrl: "StreamingAssets",
                 companyName: "name",
                 productName: "name",
